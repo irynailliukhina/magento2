@@ -31,6 +31,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
                 buttons: [
                     {
                         text: "Add to Cart",
+                        class: 'action-primary action-accept',
                         click: function () {
                             this.closeModal();
                         },
@@ -60,6 +61,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
                 });
 
                 container.owlCarousel({
+                    lazyLoad:true,
                     loop: true,
                     margin: 10,
                     nav: true,
