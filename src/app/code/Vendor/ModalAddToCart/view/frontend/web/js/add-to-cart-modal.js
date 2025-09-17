@@ -4,14 +4,8 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
 ) {
     "use strict";
 
-    // Listen to Magento AJAX add-to-cart event
-    $(document).on("ajax:addToCart", function (event, data) {
-        let productName = data.form.data().productName;
-        openAddToCartModal(productName);
-    });
-
-    function openAddToCartModal(productName) {
-        var popupContent = `
+    $(document).on("custom:addToCartModal", function (event, productName) {
+       var popupContent = `
         <div class="add-to-cart-modal-content">
             <div class="modal-subtitle">${$.mage.__(
                 "You might also like"
@@ -30,7 +24,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
                 title: $.mage.__('You added %1 to your shopping cart').replace('%1', productName),
                 buttons: [
                     {
-                        text: "Add to Cart",
+                        text: $.mage.__("Add to Cart"),
                         class: 'action-primary action-accept',
                         click: function () {
                             this.closeModal();
@@ -43,7 +37,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
 
         // Initialize Owl Carousel after content is added
         initRecommendedCarousel(popup.find(".recommended-carousel"));
-    }
+    });
 
     function initRecommendedCarousel(container) {
         $.ajax({
