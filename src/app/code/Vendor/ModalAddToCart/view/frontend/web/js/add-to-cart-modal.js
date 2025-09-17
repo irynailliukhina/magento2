@@ -6,18 +6,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
 
     // Listen to Magento AJAX add-to-cart event
     $(document).on("ajax:addToCart", function (event, data) {
-        var productName = "";
-
-        // // Try productInfo first
-        // if (data.productInfo && data.productInfo.name) {
-        //     productName = data.productInfo.name;
-        // }
-        // // Fallback: data attribute on the form
-        // else if (data.form && data.form.data('product-name')) {
-        //     productName = data.form.data('product-name');
-        // }
-        debugger;
-
+        let productName = data.form.data().productName;
         openAddToCartModal(productName);
     });
 
@@ -38,10 +27,7 @@ define(["jquery", "Magento_Ui/js/modal/modal", "owlcarousel"], function (
             .modal({
                 modalClass: "add-to-cart-modal",
                 type: "slide",
-                title: $.mage.__(
-                    "You added %1 to your shopping cart",
-                    productName
-                ),
+                title: $.mage.__('You added %1 to your shopping cart').replace('%1', productName),
                 buttons: [
                     {
                         text: "Add to Cart",
