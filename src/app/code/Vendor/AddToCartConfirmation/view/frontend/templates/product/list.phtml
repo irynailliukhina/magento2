@@ -83,6 +83,7 @@ $_helper = $block->getData('outputHelper');
                                 <div class="actions-primary test">
                                     <?php if ($_product->isSaleable()):?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                        <!-- Adding name value for the module 'data-product-name' -->
                                         <form data-role="tocart-form"
                                               data-product-sku="<?= $escaper->escapeHtml($_product->getSku()) ?>"
                                               data-product-name="<?= $escaper->escapeHtml($_product->getName()) ?>"
@@ -103,8 +104,6 @@ $_helper = $block->getData('outputHelper');
                                                    value="<?=
                                                    /* @noEscape */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED]
                                                     ?>">
-                                            <input type="hidden" name="product-name"
-                                                   value="<?= $escaper->escapeHtml($_product->getName()) ?>">
                                             <?= $block->getBlockHtml('formkey') ?>
                                             <button type="submit"
                                                     title="<?= $escaper->escapeHtmlAttr(__('Add to Cart')) ?>"

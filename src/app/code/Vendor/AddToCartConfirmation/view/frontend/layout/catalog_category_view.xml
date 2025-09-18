@@ -3,7 +3,7 @@
     <body>
         <referenceBlock name="category.products.list">
             <action method="setTemplate">
-                <argument name="template" xsi:type="string">Vendor_ModalAddToCart::product/list.phtml</argument>
+                <argument name="template" xsi:type="string">Vendor_AddToCartConfirmation::product/list.phtml</argument>
             </action>
         </referenceBlock>
     </body>

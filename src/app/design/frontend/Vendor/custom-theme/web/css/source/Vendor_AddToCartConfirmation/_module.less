@@ -1,11 +1,23 @@
-@import '_variables.less';
+@import "_variables.less";
 
 .modal-header {
     .lib-vendor-prefix-display(inline-block);
+
+    .action-close {
+        width: 40px;
+        height: 40px;
+    }
+
+    .action-close:active,
+    .action-close:hover,
+    .action-close:focus {
+        box-shadow: @focus__box-shadow;
+    }
 }
 
 .modal-title {
     .lib-font-size(2rem);
+    .lib-css(margin-right, 20px);
 }
 
 .modal-content {
@@ -39,13 +51,24 @@
     justify-content: center;
     gap: 5em;
 
+    button {
+        width: 40px;
+        &:hover,
+        &:active {
+            box-shadow: @focus__box-shadow;
+        }
+    }
     span {
         .lib-font-size(3rem);
     }
 }
 
 // Media query for mobile
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+.media-width(@extremum, @break)
+    when
+    (@extremum = "min")
+    and
+    (@break = @screen__m) {
     .modal-subtitle {
         .lib-css(margin-top, 2em);
         .lib-css(margin-bottom, 2em);
